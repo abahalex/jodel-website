@@ -1,131 +1,185 @@
 import Link from "next/link";
 import Image from "next/image";
 import { QuoteForm } from "@/components/QuoteForm";
-import { ArrowRight, ArrowUpRight, Calendar, Check, Clock, Mail, Phone, Pin, Sparkle } from "@/components/Icons";
+import { ArrowRight, ArrowUpRight, Check, Mail, Phone, Pin, Sparkle } from "@/components/Icons";
 import { site, whatsappHref } from "@/lib/site";
 
 const services = [
-  { title: "Regular home cleaning", description: "Weekly, fortnightly or one-off help to keep your home fresh and comfortable.", photo: "service-regular", label: "For the everyday" },
-  { title: "Deep cleaning", description: "A more detailed clean when your home needs additional care and attention.", photo: "service-deep", label: "For a fresh start" },
-  { title: "After builders cleaning", description: "Cleaning after renovation or building work, subject to a property assessment.", photo: "service-builders", label: "After the hard work" },
-  { title: "End-of-tenancy cleaning", description: "A tailored clean for tenants, landlords and property managers ahead of a move.", photo: "service-tenancy", label: "For the next chapter" },
+  { number: "01", title: "Regular home cleaning", short: "Keep on top of everyday life.", text: "Weekly, fortnightly or occasional cleaning shaped around your home and routine.", image: "regular" },
+  { number: "02", title: "Deep cleaning", short: "A proper reset for your space.", text: "Detailed attention for kitchens, bathrooms and the areas that need extra care.", image: "deep" },
+  { number: "03", title: "End-of-tenancy cleaning", short: "Move on with one less worry.", text: "Cleaning for tenants, landlords and property managers preparing for a handover.", image: "tenancy" },
+  { number: "04", title: "After-builders cleaning", short: "The finishing touch.", text: "Cleaning following renovation or building work, quoted to suit the property's condition.", image: "builders" },
+];
+
+const extras = ["Oven & hob cleaning", "Fridge cleaning", "Inside cupboards", "Interior windows"];
+const questions = [
+  { question: "How much will my clean cost?", answer: "Every property is different. We provide a personalised quotation based on the service, property size, condition and any extras you request. Asking for a quote is free." },
+  { question: "Which areas do you cover?", answer: "JODEL is based in Bexley, South East London. Share your postcode and we'll confirm whether we're able to cover your address." },
+  { question: "Can I book a regular clean?", answer: "Yes. You can enquire about weekly or fortnightly cleaning, and we'll confirm availability before arranging a visit." },
+  { question: "Do I have to pay when I enquire?", answer: "No. An enquiry is not a confirmed booking, and there's no payment required to request a quote. We'll discuss the work, price and available dates with you first." },
 ];
 
 export default function Home() {
-  const whatsapp = whatsappHref();
+  const whatsApp = whatsappHref();
   return (
     <>
-      <div className="site-announcement"><span className="announcement-dot" /> SPOTLESS SPACES <span className="announcement-star">✦</span> EXPERT CLEANERS</div>
+      <div className="utility-bar">
+        <div className="shell utility-inner">
+          <span><span className="utility-dot" aria-hidden="true" /> BEXLEY &amp; SURROUNDING AREAS</span>
+          <a href={`mailto:${site.email}`}>ENQUIRIES: {site.email}</a>
+        </div>
+      </div>
       <header className="site-header" id="top">
-        <div className="container nav-inner">
-          <Link href="/" className="brand" aria-label="JODEL Cleaning home">
-            <Image src="/jodel-logo.png" width={272} height={92} alt="JODEL Cleaning" className="brand-logo" priority />
+        <div className="shell header-inner">
+          <Link className="brand" href="/" aria-label="JODEL Cleaning homepage">
+            <Image src="/jodel-logo.png" width={252} height={85} alt="JODEL Cleaning" priority />
           </Link>
-          <nav className="nav-links" aria-label="Main navigation">
-            <a href="#services">Our services</a><a href="#how-it-works">How it works</a><a href="#about">Why JODEL</a><a href="#faq">FAQs</a>
+          <nav className="desktop-nav" aria-label="Main navigation">
+            <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a>
           </nav>
-          <a className="nav-contact" href="#quote">Get a free quote <ArrowUpRight /></a>
-          <details className="mobile-menu"><summary aria-label="Open menu"><span /><span /><span /></summary>
-            <nav aria-label="Mobile navigation"><a href="#services">Our services</a><a href="#how-it-works">How it works</a><a href="#about">Why JODEL</a><a href="#faq">FAQs</a><a href="#quote">Get a free quote</a></nav>
+          <a className="header-cta" href="#quote">Get a quote <ArrowUpRight /></a>
+          <details className="mobile-nav">
+            <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
+            <nav aria-label="Mobile navigation">
+              <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><a href="#quote">Get a free quote <ArrowUpRight /></a>
+            </nav>
           </details>
         </div>
       </header>
+
       <main>
-        <section className="hero section" aria-labelledby="hero-title">
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <div className="eyebrow"><span className="tiny-symbol">✳</span> SPOTLESS SPACES. EXPERT CLEANERS.</div>
-              <h1 id="hero-title">Life&apos;s busy.<br />Let&apos;s make <em>home</em><br /><span className="hero-last">feel easy<span className="period">.</span></span></h1>
-              <p className="hero-description">From everyday upkeep to a proper deep clean, JODEL makes it easier to enjoy a home that feels fresh. Tell us what you need and receive a personalised quote.</p>
-              <div className="hero-actions"><a href="#quote" className="button button-primary">Get your free quote <ArrowUpRight /></a><a href="#services" className="hero-secondary">Explore our services <ArrowRight /></a></div>
-              <div className="hero-detail"><div className="hero-detail-icon"><Pin /></div><div><strong>Here to make life easier.</strong><span>Cleaning enquiries welcome in London and nearby areas.</span></div></div>
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="hero-content shell">
+            <div className="hero-text">
+              <p className="kicker kicker-light"><span className="kicker-rule" /> HOME CLEANING, SIMPLIFIED</p>
+              <h1 id="hero-title">A clean home.<br /><span>A clear mind.</span></h1>
+              <p className="hero-lede">Come home to a space that feels good. From your weekly clean to a complete reset, JODEL helps take cleaning off your to-do list.</p>
+              <div className="hero-actions">
+                <a className="action action-yellow" href="#quote">Request a free quote <ArrowUpRight /></a>
+                <a className="text-link light-link" href="#services">View cleaning services <ArrowRight /></a>
+              </div>
+              <div className="hero-local"><Pin /><span>Based in Bexley, serving nearby areas of South East London.</span></div>
             </div>
-            <div className="hero-visual" role="img" aria-label="A beautifully presented home interior">
-              <div className="hero-image" /><span className="hero-image-circle">GOOD<br />TO BE<br />HOME <span>✳</span></span>
-              <div className="hero-photo-card"><div className="card-mini-sparkle"><Sparkle /></div><div><span>THE JODEL FEELING</span><strong>Less cleaning.<br />More living.</strong></div></div>
-              <div className="hero-image-caption">A FRESHER WAY TO FEEL AT HOME <span>— 01</span></div>
+            <div className="hero-media">
+              <div className="hero-photo" role="img" aria-label="Bright modern home interior, illustrative photograph" />
+              <div className="hero-photo-caption"><span>01 — MADE FOR REAL HOMES</span><span>JODEL CLEANING</span></div>
             </div>
           </div>
-          <div className="container hero-bottom-line"><span><span className="line-dot" /> A clean that works around you</span><span>SCROLL TO EXPLORE ↓</span></div>
         </section>
 
-        <section className="care-strip" aria-label="What to expect"><div className="container care-strip-inner"><span><Sparkle /> Thoughtful cleaning</span><span className="care-divider" /><span><Calendar /> Flexible enquiries</span><span className="care-divider" /><span><Check /> Clear, tailored quotes</span></div></section>
-
-        <section className="section services-section" id="services" aria-labelledby="services-title"><div className="container">
-          <div className="section-heading"><div><p className="eyebrow"><span className="tiny-symbol">✳</span> OUR SERVICES</p><h2 id="services-title">A clean for <em>every</em><br />kind of day<span className="period">.</span></h2></div><p>From your weekly routine to moving day, explore the cleaning services we can discuss for your property.</p></div>
-          <div className="services-grid">
-            {services.map((service, index) => <article className="service-card" key={service.title}>
-              <div className={"service-photo " + service.photo}><span className="service-number">0{index + 1} / 04</span><span className="service-photo-label">{service.label}</span></div>
-              <div className="service-info"><div><h3>{service.title}</h3><p>{service.description}</p></div><a href="#quote" aria-label={"Request a quote for " + service.title} className="service-link"><ArrowUpRight /></a></div>
-            </article>)}
+        <div className="promise-bar" aria-label="What JODEL offers">
+          <div className="shell promise-list">
+            <span><Check /> Personalised quotes</span>
+            <span><Check /> One-off &amp; recurring cleaning</span>
+            <span><Check /> Clear, simple enquiries</span>
           </div>
-          <div className="service-bottom"><p>Not sure which service you need? <strong>We'll help you choose.</strong></p><a href="#quote" className="inline-link">Ask for a quote <ArrowRight /></a></div>
-        </div></section>
-
-        <section className="breather" id="about" aria-labelledby="about-title"><div className="container breather-grid">
-          <div className="breather-visual"><div className="breather-photo" role="img" aria-label="Bright and welcoming home" /><div className="breather-stamp">A LITTLE<br />MORE TIME<br />FOR YOU <span>↗</span></div></div>
-          <div className="breather-copy"><p className="eyebrow"><span className="tiny-symbol">✳</span> THE JODEL WAY</p><h2 id="about-title">It's more than <em>clean.</em><br />It's coming home<br />to calm<span className="period">.</span></h2>
-            <p>Every home is different. We keep things straightforward by listening to your requirements, discussing the work involved and agreeing a clear quote before a booking.</p>
-            <div className="breather-points">
-              <div><span className="round-icon"><Check /></span><div><h3>Tailored to your space</h3><p>Tell us what needs attention and we'll discuss the right cleaning scope.</p></div></div>
-              <div><span className="round-icon"><Check /></span><div><h3>Clear pricing</h3><p>We'll explain your quotation before you decide whether to proceed.</p></div></div>
-              <div><span className="round-icon"><Check /></span><div><h3>Easy to get started</h3><p>Make an enquiry online or contact us directly by phone or email.</p></div></div>
-            </div>
-            <a className="button button-outline" href="#quote">Let's talk cleaning <ArrowUpRight /></a>
-          </div>
-        </div></section>
-
-        <section className="extras-section" aria-labelledby="extras-title"><div className="container extras-inner">
-          <div><p className="eyebrow">THE FINISHING TOUCHES</p><h2 id="extras-title">Need a little <em>extra</em> attention?</h2><p>Let us know about additional tasks when requesting your quote. Availability and cost are confirmed before booking.</p></div>
-          <div className="extras-list"><span><Check /> Oven &amp; hob cleaning</span><span><Check /> Fridge cleaning</span><span><Check /> Inside cupboards</span><span><Check /> Interior windows</span><a className="inline-link" href="#quote">Ask about extras <ArrowRight /></a></div>
-        </div></section>
-
-        <section className="section steps-section" id="how-it-works"><div className="container">
-          <div className="steps-head"><p className="eyebrow"><span className="tiny-symbol">✳</span> SIMPLE FROM THE START</p><h2>Three little steps<br />to a <em>fresher space.</em></h2></div>
-          <div className="steps-grid">
-            <div className="step"><span className="step-num">01</span><div className="step-icon"><Sparkle /></div><h3>Tell us about your home</h3><p>Send your postcode, property details and the cleaning service you need.</p></div>
-            <div className="step"><span className="step-num">02</span><div className="step-icon"><Clock /></div><h3>Receive a quote</h3><p>We review the request and confirm coverage, scope and price.</p></div>
-            <div className="step"><span className="step-num">03</span><div className="step-icon"><Calendar /></div><h3>Arrange your clean</h3><p>We agree an appointment if the quotation and availability suit you.</p></div>
-          </div>
-        </div></section>
-
-        <section className="location-section"><div className="container location-grid"><div className="location-icon"><Pin /></div><div><p className="eyebrow">WHERE WE WORK</p><h2>Cleaning near you<span className="period">?</span></h2><p>JODEL is based in the Bexley area. Send your postcode and we'll confirm whether we can help at your address.</p></div><a href="#quote" className="button button-light">Check your postcode <ArrowUpRight /></a></div></section>
-
-        <section className="section quote-section" id="quote" aria-labelledby="quote-title"><div className="container quote-grid">
-          <div className="quote-left"><p className="eyebrow"><span className="tiny-symbol">✳</span> LET'S GET STARTED</p><h2 id="quote-title">Your lovely,<br /><em>fresh start</em><br />begins here<span className="period">.</span></h2>
-            <p>Tell us about your space and what needs doing. We'll review your details and respond with the next steps.</p>
-            <div className="quote-note"><span className="note-icon"><Check /></span><span><strong>Free to enquire.</strong> No payment or booking commitment is required to request a quote.</span></div>
-            <div className="quote-decoration" aria-hidden="true">✳</div>
-            <div className="quote-direct"><p>Prefer to speak with us?</p>
-              {site.phone && <a href={"tel:" + site.phone.replace(/\s/g, "")}><Phone />{site.phone}</a>}
-              {site.email && <a href={"mailto:" + site.email}><Mail />{site.email}</a>}
-              {site.whatsapp && <a href={whatsapp} target="_blank" rel="noopener noreferrer"><ArrowUpRight />Message us on WhatsApp</a>}
-            </div>
-          </div>
-          <QuoteForm />
-        </div></section>
-
-        <section className="section faq-section" id="faq"><div className="container faq-grid">
-          <div className="faq-left"><p className="eyebrow"><span className="tiny-symbol">✳</span> GOOD TO KNOW</p><h2>A few common<br /><em>questions.</em></h2><p>We're happy to help you understand what to expect before arranging a cleaning visit.</p><a href="#quote" className="inline-link">Get in touch <ArrowRight /></a></div>
-          <div className="faq-items">
-            <details><summary>How much does a clean cost?<span>+</span></summary><p>Pricing depends on your property, the service requested, the condition and any extras. Request a personalised quote before booking.</p></details>
-            <details><summary>Which areas do you cover?<span>+</span></summary><p>We're based around Bexley and can check availability for surrounding areas. Share your postcode so we can confirm.</p></details>
-            <details><summary>Can I request weekly or fortnightly cleaning?<span>+</span></summary><p>Yes. Let us know your preferred frequency and we'll discuss availability.</p></details>
-            <details><summary>Is my enquiry a confirmed booking?<span>+</span></summary><p>No. We'll first confirm your requested service, quote and available dates.</p></details>
-            <details><summary>Do you offer end-of-tenancy and after builders cleaning?<span>+</span></summary><p>Yes, you can request a quotation for either service. We may need additional property details to assess the work.</p></details>
-          </div>
-        </div></section>
-
-        <section className="last-call"><div className="container last-call-inner"><span className="last-sparkle">✳</span><div><p>MORE TIME TO LIVE. LESS TIME TO CLEAN.</p><h2>Let's make room<br />for the <em>good stuff.</em></h2></div><a href="#quote" className="button button-white">Get a free quote <ArrowUpRight /></a></div></section>
-      </main>
-      <footer className="site-footer"><div className="container">
-        <div className="footer-top"><div><Link href="/" className="footer-brand"><Image src="/jodel-logo.png" width={232} height={79} alt="JODEL Cleaning" className="footer-logo" /></Link><p>Spotless spaces. Expert cleaners. Home cleaning made simpler.</p></div>
-          <div className="footer-links"><div><h3>EXPLORE</h3><a href="#services">Our services</a><a href="#how-it-works">How it works</a><a href="#about">Why JODEL</a><a href="#quote">Get a quote</a></div>
-            <div><h3>GET IN TOUCH</h3>{site.phone && <a href={"tel:" + site.phone.replace(/\s/g, "")}>{site.phone}</a>}{site.email && <a href={"mailto:" + site.email}>{site.email}</a>}{site.whatsapp && <a href={whatsapp}>WhatsApp us</a>}<span>London, UK</span></div></div>
         </div>
-        <div className="footer-bottom"><p>© {new Date().getFullYear()} JODEL Cleaning.</p><div><Link href="/privacy">Privacy notice</Link><a href="#top">Back to top ↑</a></div></div>
-      </div></footer>
-      {site.whatsapp && <a className="floating-contact" href={whatsapp} target="_blank" rel="noopener noreferrer">Chat with JODEL</a>}
+
+        <section className="block services" id="services" aria-labelledby="services-heading">
+          <div className="shell">
+            <div className="section-intro">
+              <div><p className="kicker">WHAT WE DO</p><h2 id="services-heading">A service for<br />every kind of <em>clean.</em></h2></div>
+              <p>Whether life is busy, you're moving home or your space needs extra attention, we'll discuss a clean that works for you.</p>
+            </div>
+            <div className="service-grid">
+              {services.map(item => (
+                <article className="service-tile" key={item.number}>
+                  <a className="service-image-link" href="#quote" aria-label={`Enquire about ${item.title}`}>
+                    <div className={`service-image image-${item.image}`} role="img" aria-label={`Illustrative photograph for ${item.title}`} />
+                    <span className="service-index">{item.number} / 04</span>
+                  </a>
+                  <div className="service-detail">
+                    <div><p className="service-caption">{item.short}</p><h3>{item.title}</h3><p className="service-description">{item.text}</p></div>
+                    <a className="service-arrow" href="#quote" aria-label={`Request a quote for ${item.title}`}><ArrowUpRight /></a>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="service-note"><p>Not sure which clean is right? <strong>Tell us what you need and we'll help you decide.</strong></p><a className="text-link" href="#quote">Talk to JODEL <ArrowRight /></a></div>
+          </div>
+        </section>
+
+        <section className="block approach" id="approach" aria-labelledby="approach-heading">
+          <div className="shell approach-layout">
+            <div className="approach-intro">
+              <p className="kicker kicker-light">WHY JODEL</p>
+              <h2 id="approach-heading">Good cleaning starts with <em>listening.</em></h2>
+              <p>There isn't one cleaning routine that fits every home. We start by understanding yours, then agree what needs doing before work begins.</p>
+              <a className="action action-outline-light" href="#quote">Tell us about your home <ArrowUpRight /></a>
+            </div>
+            <div className="approach-list">
+              <div className="approach-row"><span>01</span><div><h3>Made for your home</h3><p>Choose the cleaning you need, not a one-size-fits-all package.</p></div></div>
+              <div className="approach-row"><span>02</span><div><h3>Know what to expect</h3><p>We discuss the scope and provide a clear quotation before confirming an appointment.</p></div></div>
+              <div className="approach-row"><span>03</span><div><h3>Easy to reach</h3><p>Request a quote online or get in touch directly by phone or email.</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="block process" id="process" aria-labelledby="process-heading">
+          <div className="shell">
+            <div className="section-intro process-head"><div><p className="kicker">HOW IT WORKS</p><h2 id="process-heading">From enquiry<br />to a <em>fresher home.</em></h2></div><p>No complicated booking system. Just the details we need to get started.</p></div>
+            <div className="process-rows">
+              <div className="process-row"><span className="process-number">01</span><h3>Tell us what you need</h3><p>Share your postcode, property details and type of cleaning.</p><span className="process-symbol"><ArrowRight /></span></div>
+              <div className="process-row"><span className="process-number">02</span><h3>Receive a tailored quote</h3><p>We'll review the request, discuss the work and confirm the price.</p><span className="process-symbol"><ArrowRight /></span></div>
+              <div className="process-row"><span className="process-number">03</span><h3>Agree a suitable time</h3><p>If the quote works for you, we'll confirm availability and arrange the clean.</p><span className="process-symbol"><Check /></span></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="extras" aria-labelledby="extras-heading">
+          <div className="shell extras-layout">
+            <div><p className="kicker kicker-light">THE LITTLE EXTRAS</p><h2 id="extras-heading">A little more attention<br />where it matters.</h2><p>Ask about additional tasks when you request a quotation. Extras are priced and agreed separately.</p></div>
+            <div className="extras-grid">{extras.map(extra => <span key={extra}><Check />{extra}</span>)}</div>
+          </div>
+        </section>
+
+        <section className="block quote" id="quote" aria-labelledby="quote-heading">
+          <div className="shell quote-layout">
+            <div className="quote-copy">
+              <p className="kicker">LET'S GET STARTED</p>
+              <h2 id="quote-heading">Tell us about<br />your <em>space.</em></h2>
+              <p>Every clean is different, so we quote individually. Share a few details and we'll get back to you about what's possible.</p>
+              <div className="quote-promise"><Check /><span><strong>No pressure, no payment.</strong><br />Requesting a quote doesn't confirm a booking.</span></div>
+              <div className="contact-card">
+                <p>PREFER TO TALK?</p>
+                {site.phone && <a href={`tel:${site.phone.replace(/\s/g, "")}`}><Phone /> {site.phone}</a>}
+                {site.email && <a href={`mailto:${site.email}`}><Mail /> {site.email}</a>}
+                {site.whatsapp && <a href={whatsApp} target="_blank" rel="noopener noreferrer"><ArrowUpRight /> WhatsApp JODEL</a>}
+              </div>
+            </div>
+            <QuoteForm />
+          </div>
+        </section>
+
+        <section className="block questions" id="questions" aria-labelledby="questions-heading">
+          <div className="shell questions-layout">
+            <div><p className="kicker">FREQUENTLY ASKED</p><h2 id="questions-heading">Good to <em>know.</em></h2><p>A few useful things before you book.</p></div>
+            <div className="question-list">
+              {questions.map(({question, answer}) => (
+                <details key={question}>
+                  <summary>{question}<span className="faq-plus" aria-hidden="true">+</span></summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="closing" aria-labelledby="closing-heading">
+          <div className="shell closing-layout"><div><p className="kicker kicker-light">JODEL CLEANING</p><h2 id="closing-heading">A fresher home starts here.</h2></div><a className="action action-yellow" href="#quote">Get your free quote <ArrowUpRight /></a></div>
+        </section>
+      </main>
+
+      <footer className="footer">
+        <div className="shell">
+          <div className="footer-main">
+            <div><Link href="/" aria-label="JODEL Cleaning homepage"><Image src="/jodel-logo.png" width={225} height={76} alt="JODEL Cleaning" /></Link><p>Spotless spaces. Expert cleaners.<br />Based in Bexley, South East London.</p></div>
+            <nav aria-label="Footer navigation"><h3>EXPLORE</h3><a href="#services">Our services</a><a href="#approach">Our approach</a><a href="#quote">Get a quote</a><a href="/privacy">Privacy notice</a></nav>
+            <div className="footer-contact"><h3>CONTACT</h3>{site.phone && <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>}{site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}</div>
+          </div>
+          <div className="footer-end"><span>© {new Date().getFullYear()} JODEL Cleaning. All rights reserved.</span><a href="#top">Back to top ↑</a></div>
+        </div>
+      </footer>
     </>
   );
 }
