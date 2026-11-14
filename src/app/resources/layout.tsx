@@ -13,7 +13,7 @@ export default function ResourcesLayout({ children }: Readonly<{ children: React
         </div>
       </header>
       {children}
-      <footer className="resource-footer"><div className="shell resource-footer-inner"><span>© {new Date().getFullYear()} {site.name} · Based in Bexley, South East London</span><span><Link href="/privacy">Privacy</Link> · <Link href="/#quote">Enquire</Link></span></div></footer>
+      <footer className="resource-footer"><div className="shell resource-footer-inner"><span>© {new Date().getFullYear()} {site.name} · Based in Bexley, South East London</span><span><Link href="/privacy">Privacy</Link> · <Link href="/terms">Terms</Link> · <Link href="/#quote">Enquire</Link></span></div></footer>
     </div>
   );
 }
