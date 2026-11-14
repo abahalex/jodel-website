@@ -174,7 +174,7 @@ export default function Home() {
         <div className="shell">
           <div className="footer-main">
             <div><Link href="/" aria-label="JODEL Cleaning homepage"><Image src="/jodel-logo.png" width={225} height={76} alt="JODEL Cleaning" /></Link><p>Spotless spaces. Expert cleaners.<br />Based in Bexley, South East London.</p></div>
-            <nav aria-label="Footer navigation"><h3>EXPLORE</h3><a href="#services">Our services</a><a href="#approach">Our approach</a><Link href="/resources">Client & cleaner resources</Link><a href="#quote">Get a quote</a><a href="/privacy">Privacy notice</a></nav>
+            <nav aria-label="Footer navigation"><h3>EXPLORE</h3><a href="#services">Our services</a><a href="#approach">Our approach</a><Link href="/resources">Client & cleaner resources</Link><a href="#quote">Get a quote</a><a href="/privacy">Privacy notice</a><a href="/terms">Terms of business</a></nav>
             <div className="footer-contact"><h3>CONTACT</h3>{site.phone && <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>}{site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}</div>
           </div>
           <div className="footer-end"><span>© {new Date().getFullYear()} JODEL Cleaning. All rights reserved.</span><a href="#top">Back to top ↑</a></div>
