@@ -197,7 +197,7 @@ h1 em,h2 em{font:inherit;font-style:normal;color:var(--teal)}
 .legal-layout section h2{font-size:1.4rem;letter-spacing:-.02em;margin:0 0 12px}
 .legal-layout section p{font-size:1rem;color:#3a5367}
 .legal-layout section a{text-decoration:underline;color:var(--teal)}
-.legal-warning{border-left:4px solid #a46d22;padding:18px;background:#fff1d8;font-size:.87rem}
+.legal-clauses{padding-left:24px;margin:0 0 22px;line-height:1.72;color:#3a5367}.legal-clauses li{margin-bottom:12px}.legal-layout section ul{color:#3a5367;padding-left:24px}.legal-layout section ul li{margin-bottom:10px}.legal-warning{border-left:4px solid #a46d22;padding:18px;background:#fff1d8;font-size:.87rem}
 @media(max-width:1100px){
  .shell{width:min(100% - 54px,1050px)}
  .desktop-nav{gap:17px}
