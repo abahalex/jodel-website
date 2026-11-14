@@ -11,8 +11,8 @@ This branch adapts the uploaded Maid2Clean reference files into **JODEL Cleaning
 | ClientInstructionChecklist.pdf | `/resources/client-instruction-checklist` | Keeps all six room groups and source tasks, A/B priority and done fields. Print / Save as PDF. |
 | ClientProductChecklist.pdf | `/resources/client-product-checklist` | Keeps colour-coded cloth guidance and item-by-item supplies list, with checkboxes and print. |
 | CleanerAttendancePayments.pdf | `/resources/attendance-payments` | Same record fields (date, hours, amount, signatures); now typeable and printable. |
-| terms.pdf | **NOT PUBLIC** | Fee, payment, cancellation, 18-month restriction, insurance and liability terms are material legal commitments. Do not rebrand and publish this 2022 third-party agreement without checking actual JODEL terms and UK legal compliance. |
-| Privacy Notice _ Maid2Clean.html | Existing `/privacy` retained | JODEL has its own starter notice and its real data-handling arrangements; not safe to substitute another controller's notice. Review as part of launch. |
+| terms.pdf | `/terms` | JODEL Terms of Business with sections A–H: agency introductions, payments, £1m stated insurance cover, £100 first-loss threshold, responsibility, notice, 14-day cancellation and 18-month non-solicitation. Prices and late-cancellation amounts instead come from JODEL booking documentation. Mandatory consumer rights are protected. |
+| Privacy Notice _ Maid2Clean.html | Expanded `/privacy` | JODEL-specific notice covering client and cleaner information, data controller, lawful purposes, data sharing, retention, rights, cookies and actual email/website providers. Franchise identifiers and unrelated Maid2Clean processors are excluded. |
 | Local cleaning jobs ...html | `/resources/cleaning-jobs` | JODEL-only local enquiry information, no unsupported promises of jobs, portal, pay rates or nationwide coverage. |
 | House Cleaning Time Calculator ...html | `/resources/calculator` | Same room categories and extras, 0–10 controls. Reference used a remote PHP calculation endpoint; its coefficients were not in the uploaded file. JODEL estimate uses visible provisional local assumptions. |
 | How much does a house cleaner cost ...html | Existing quote-based pricing | No third-party prices carried over. JODEL confirms pricing individually. |
@@ -30,13 +30,16 @@ This branch adapts the uploaded Maid2Clean reference files into **JODEL Cleaning
 ## Legal and operational sign-off before merge
 
 - [ ] Confirm actual JODEL insurance cover, vetting steps, key handling, replacement-cleaner availability and precise payment process.
-- [ ] Have JODEL's proposed terms drafted/reviewed: what is sold, who is the contracting party, self-employed vs employed cleaner arrangements, cancellation and consumer rights, liability/insurance, deposits, fees and records.
+- [x] Draft JODEL online terms and detailed privacy notice, linked from the website.
+- [ ] Verify JODEL's contracting legal entity and business address; the current website does not contain a verified company registration/registered address.
+- [ ] Obtain JODEL's actual £1m public liability insurance certificate and review the first £100 excess, theft exclusion and bleach exclusion. User states these match operating commitments; insurer/documentary evidence has not been inspected.
+- [ ] Obtain UK legal review of the 18-month restriction, two-month termination notice, no-refund clauses and liability exclusions in the 2022 source under consumer fairness rules. The online adaptation preserves the intent without excluding mandatory consumer rights.
 - [ ] Check any reproduction permissions and rewrite third-party material where necessary; do not publish another company's branding, claims or reviews as JODEL's.
 - [ ] Ensure onboarding/worker classification accurately reflects current JODEL operations and UK law.
-- [ ] Review JODEL `/privacy` against actual processing (Resend, enquiry email, any future client/cleaner accounts) and correct controller details.
+- [ ] Review the expanded JODEL `/privacy` against actual processing, email and hosting providers, applicant workflows, retention/deletion procedures, international transfers and legal controller identity.
 - [ ] Verify live email/phone and actual service postcodes. Test forms and mobile/desktop print.
 - [ ] Run `npm ci && npm run lint && npm run build` in a normal GitHub Actions or local environment. This connected session could not clone the public repository from its restricted runtime.
 
 ## Launch decision
 
-This branch is intended for **review as a draft pull request**. The JODEL forms are working printable website forms, not copies of the Maid2Clean PDFs. Publishing the third-party legal agreement verbatim with only a new logo is intentionally excluded because those terms would make specific potentially inaccurate commitments for JODEL.
+This branch is intended for **review as a draft pull request**. The user confirmed JODEL accepts the same underlying operational commitments as the source agreement; `/terms` reflects that direction using JODEL-specific wording and consumer-law safeguards. The fees remain unpriced until individually confirmed, and actual insurance documentation, legal entity details and consumer-contract review still require launch sign-off. The privacy notice is adapted to this site’s actual data pathways rather than falsely inheriting Maid2Clean franchise infrastructure.
