@@ -35,13 +35,13 @@ export default function Home() {
             <Image src="/jodel-logo.png" width={252} height={85} alt="JODEL Cleaning" priority />
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
-            <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a>
+            <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><Link href="/resources">Resources</Link>
           </nav>
           <a className="header-cta" href="#quote">Get a quote <ArrowUpRight /></a>
           <details className="mobile-nav">
             <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
             <nav aria-label="Mobile navigation">
-              <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><a href="#quote">Get a free quote <ArrowUpRight /></a>
+              <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><Link href="/resources">Resources</Link><a href="#quote">Get a free quote <ArrowUpRight /></a>
             </nav>
           </details>
         </div>
@@ -174,7 +174,7 @@ export default function Home() {
         <div className="shell">
           <div className="footer-main">
             <div><Link href="/" aria-label="JODEL Cleaning homepage"><Image src="/jodel-logo.png" width={225} height={76} alt="JODEL Cleaning" /></Link><p>Spotless spaces. Expert cleaners.<br />Based in Bexley, South East London.</p></div>
-            <nav aria-label="Footer navigation"><h3>EXPLORE</h3><a href="#services">Our services</a><a href="#approach">Our approach</a><a href="#quote">Get a quote</a><a href="/privacy">Privacy notice</a></nav>
+            <nav aria-label="Footer navigation"><h3>EXPLORE</h3><a href="#services">Our services</a><a href="#approach">Our approach</a><Link href="/resources">Client & cleaner resources</Link><a href="#quote">Get a quote</a><a href="/privacy">Privacy notice</a></nav>
             <div className="footer-contact"><h3>CONTACT</h3>{site.phone && <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>}{site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}</div>
           </div>
           <div className="footer-end"><span>© {new Date().getFullYear()} JODEL Cleaning. All rights reserved.</span><a href="#top">Back to top ↑</a></div>
