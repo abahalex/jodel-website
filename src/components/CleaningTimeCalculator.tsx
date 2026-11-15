@@ -1,24 +1,8 @@
 "use client";
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { calculateCleaningEstimate, extras, rooms } from "@/lib/cleaning-time.mjs";
 
-const rooms = [
-  {key:"bedrooms",label:"Bedrooms",minutes:25},
-  {key:"bathrooms",label:"Bathrooms",minutes:35},
-  {key:"living",label:"Living & dining rooms",minutes:25},
-  {key:"kitchens",label:"Kitchens",minutes:40},
-  {key:"utility",label:"Study / utility rooms",minutes:15},
-  {key:"hallways",label:"Hallways",minutes:12},
-  {key:"stairs",label:"Staircases",minutes:12},
-] as const;
-const extras = [
-  {key:"ironing",label:"Ironing",minutes:30},
-  {key:"laundry",label:"Folding laundry",minutes:20},
-  {key:"windows",label:"Internal windows",minutes:25},
-  {key:"fridge",label:"Inside fridge",minutes:20},
-  {key:"dishes",label:"Washing dishes / loading dishwasher",minutes:15},
-  {key:"bedding",label:"Changing bed sheets",minutes:15},
-] as const;
 type RoomKey=(typeof rooms)[number]["key"];
 type ExtraKey=(typeof extras)[number]["key"];
 const initialRooms: Record<RoomKey, number> = { bedrooms:0,bathrooms:0,living:0,kitchens:0,utility:0,hallways:0,stairs:0 };
@@ -28,12 +12,12 @@ export function CleaningTimeCalculator(){
   const [counts,setCounts]=useState<Record<RoomKey,number>>({...initialRooms});
   const [selected,setSelected]=useState<Record<ExtraKey,boolean>>({...initialExtras});
   const [showResult,setShowResult]=useState(false);
-  const totalRooms=rooms.reduce((acc,room)=>acc+counts[room.key],0);
-  const minutes=useMemo(()=>rooms.reduce((acc,room)=>acc+counts[room.key]*room.minutes,0)+extras.reduce((acc,extra)=>acc+(selected[extra.key]?extra.minutes:0),0),[counts,selected]);
-  const estimate=Math.ceil(minutes/30)/2;
+  const { roomCount: totalRooms, estimatedHours: estimate } = useMemo(
+    () => calculateCleaningEstimate(counts, selected), [counts, selected]
+  );
   const reset=()=>{setCounts({...initialRooms});setSelected({...initialExtras});setShowResult(false);};
   return <div className="resource-form">
-    <p className="resource-note"><strong>Preliminary estimate:</strong> This calculator reproduces the room and task inputs from the provided reference, but its original calculation ran on a third-party server and was not included in the file. For now JODEL uses a transparent planning estimate, not the other agency's unpublished formula or survey. We'll review the timings later. It is not a quote.</p>
+    <p className="resource-note"><strong>Preliminary estimate:</strong> This planning tool uses provisional JODEL assumptions for regular cleaning time per room and task, rounded up to the next half-hour. The timings have not yet been calibrated against JODEL visits and may differ considerably from actual requirements. It is not a price quotation or booking commitment.</p>
     <h2>How many rooms need cleaning?</h2><p>Choose the rooms that should be included in each regular clean (0–10 per room type).</p>
     <div className="resource-calculator-rooms">{rooms.map(room=><label className="resource-calc-row" key={room.key}><span>{room.label}</span><span className="resource-stepper"><button type="button" aria-label={`Remove one ${room.label}`} disabled={counts[room.key]===0} onClick={()=>{setCounts(c=>({...c,[room.key]:Math.max(0,c[room.key]-1)}));setShowResult(false);}}>−</button><output>{counts[room.key]}</output><button type="button" aria-label={`Add one ${room.label}`} disabled={counts[room.key]===10} onClick={()=>{setCounts(c=>({...c,[room.key]:Math.min(10,c[room.key]+1)}));setShowResult(false);}}>+</button></span></label>)}</div>
     <h2>Extra tasks at every visit</h2><p>Include any additional tasks you would like on every scheduled clean.</p>

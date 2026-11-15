@@ -14,7 +14,7 @@ export default function CleaningJobs(){return <main className="resource-document
     </div>
     <h2>What to include in your enquiry</h2>
     <ul><li>Your name and postcode/general area</li><li>Days and times available</li><li>Relevant experience and whether you can provide references</li><li>Best contact number and email</li></ul>
-    <p>The supplied reference describes a third-party cleaner portal and specific terms of self-employment. JODEL does not offer access to that portal; work status and onboarding will be explained for any actual opportunity.</p>
+    <p>Any available onboarding tools, work arrangements, status and obligations will be explained when discussing an actual opportunity.</p>
     <a className="resource-button" href={`mailto:${site.email}?subject=Cleaning%20work%20enquiry`}>Enquire about cleaning work →</a>
   </div><div className="resource-doc-bottom"><Link href="/resources">← Resources</Link><Link href="/">JODEL homepage →</Link></div>
 </div></main>;}
