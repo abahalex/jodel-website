@@ -50,7 +50,7 @@ export function QuoteForm() {
     <form className="quote-form" onSubmit={handleSubmit} noValidate={false}>
       <div className="form-head"><span>START HERE</span><span className="form-count">01 / 01</span></div>
       <h3>Tell us about your space.</h3>
-      <p className="form-subtitle">A few details are all we need to get started.</p>
+      <p className="form-subtitle">Guide price: £{site.guideHourlyRate.toFixed(2)} per hour, subject to your individual quotation. No agency or service fee. Extras depend on the time required.</p>
       <div className="form-grid">
         <label className="field"><span>Your name <b>*</b></span><input name="name" type="text" autoComplete="name" placeholder="Full name" maxLength={100} required /></label>
         <label className="field"><span>Email address <b>*</b></span><input name="email" type="email" autoComplete="email" placeholder="you@example.com" maxLength={254} required /></label>
