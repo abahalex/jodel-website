@@ -19,28 +19,28 @@ const clauses = [
   {
     title: "B. Services and payment",
     items: [
-      "The agreement commences with the first agreed clean, subject to the cancellation provisions below. JODEL introduces suitable, vetted domestic cleaners and provides the agency support described in section E. Where a change is necessary we will discuss suitable alternatives with the customer.",
-      "The customer will be told, in their written quotation or booking confirmation, the amount payable to JODEL, the amount payable directly to any introduced cleaner, any one-off charge and the method and frequency of payment. No amount quoted on another agency's website applies to JODEL.",
-      "Any recurring agency payment is paid in advance by an agreed method, such as standing order or Direct Debit. Where agreed, other payments may be made by bank transfer or card. We will not introduce an unquoted fixed per-visit fee.",
-      "Where the agreed arrangement is for the customer to pay the cleaner directly, responsibility for paying the cleaner rests with the customer. Payment should be made on the day of the clean, or as otherwise agreed between the customer and cleaner.",
-      "Where a recurring agency agreement exists, the agency fee remains payable while that agreement continues, even if an introduced cleaner is not currently being used, subject to statutory rights, agreed service credits and termination provisions. Fees cease when the agreement has lawfully ended.",
-      "Advance agency payments and fees falling within an agreed notice period are dealt with in accordance with the booking confirmation and applicable law. We may offer an appropriate credit where a service is unavailable or cancelled. Nothing in these terms excludes a refund the customer is legally entitled to receive.",
-      "If an overpayment continues after lawful termination, JODEL may agree a reasonable administration charge where properly disclosed and lawfully due. Overdue fees may attract interest only where previously agreed and permitted by law.",
-      "If a customer cancels a cleaner's visit with less than 12 hours' notice, a late cancellation fee may be payable to the cleaner, but only if the amount and conditions were clearly disclosed and agreed before booking. No fixed cancellation amount is published on this site.",
+      "The agreement starts with the first agreed clean, subject to the cancellation provisions below. JODEL arranges domestic cleaning and may introduce suitable, vetted cleaners as described in section E. The agreed work, cleaner arrangement and schedule are confirmed before service begins.",
+      "JODEL's guide price is £21.50 per hour. This is an indication, not a fixed or minimum rate: the rate confirmed for your booking may be lower or higher depending on your requirements. We provide a personalised quotation before you commit.",
+      "JODEL does not charge a separate agency fee or service charge. The customer pays only the cleaning costs and any other amount clearly disclosed and agreed in the written quotation or booking confirmation. An enquiry is free and does not create a booking.",
+      "Additional tasks, such as oven and hob cleaning, depend on the time required. Their expected time, scope and any corresponding cost will be discussed and agreed as part of the quotation; they do not carry an automatic fixed add-on price.",
+      "Before booking, JODEL will confirm the agreed hourly rate or any applicable job price, expected hours or scope, how payment will be collected, to whom it is payable and when payment is due. We will explain in advance if the customer pays an introduced cleaner directly.",
+      "If the arrangement requires payment directly to a cleaner, the customer should pay the agreed amount at the agreed time and keep a record of attendance and payment. Where payment is made to JODEL, we will confirm the method and due date separately.",
+      "Any change to the agreed tasks, hours or rate will be discussed before the revised work takes place. Any advance payment, credit or refund is handled in accordance with the booking agreement and applicable law, including the customer's mandatory statutory rights.",
+      "Any late cancellation charge, if applicable, must be clearly disclosed and agreed before booking and must comply with applicable consumer law. We do not apply undisclosed charges. The customer will be told the specific cancellation terms for their booking.",
     ],
   },
   {
     title: "C. Insurance cover",
     items: [
-      "Under the agency arrangement, introduced cleaners are covered primarily by the customer's own relevant insurance and, as a contingency, by JODEL's stated public-liability arrangements. JODEL's stated commitment is public-liability cover with a £1 million limit for qualifying loss or damage arising from the negligence of a cleaner introduced by JODEL, subject to the policy wording, exclusions and insurer's acceptance of a claim.",
+      "Under arrangements where JODEL introduces a cleaner, the customer should check their own relevant insurance. JODEL's stated contingency public-liability commitment is £1 million for qualifying loss or damage arising from the negligence of a cleaner introduced by JODEL, subject to the actual policy wording, exclusions and insurer's acceptance of a claim.",
       "Cover is on an indemnity basis. Under the stated policy arrangement, a claim must exceed £100 and the first £100 of each claimed item is not covered by JODEL. Theft of possessions or property is not covered by the stated contingency arrangement. Bleach must not be used and bleach spills are excluded.",
-      "Insurance protection and availability of cover depend on the relevant policy conditions and any required agency fees having been paid. A copy of the current policy summary, schedule and applicable conditions can be requested from JODEL before the service commences.",
+      "Insurance cover and claim decisions depend on the policy conditions and exclusions, not on payment of a separate agency fee or service charge. A copy of the applicable insurance summary, schedule and conditions may be requested from JODEL before the service commences.",
     ],
   },
   {
     title: "D. Responsibility and liability",
     items: [
-      "JODEL will use reasonable care and skill in providing its agency services. Cleaners introduced by JODEL are expected to carry out agreed tasks with reasonable care and skill.",
+      "JODEL will use reasonable care and skill when arranging domestic cleaning services. Cleaners introduced or arranged by JODEL are expected to carry out agreed tasks with reasonable care and skill.",
       "The customer and cleaner should agree day-to-day work directions, access arrangements, and the custody, safekeeping and return of keys directly. Please notify JODEL promptly of any related concern.",
       "Where work is unfinished or a service problem arises, the customer should tell JODEL and allow a reasonable opportunity to investigate and put matters right, including discussing a suitable replacement cleaner where appropriate.",
       "JODEL will not be responsible for interruptions outside its reasonable control to the extent permitted by law. Any limitation or exclusion of liability applies only where lawful and fair.",
@@ -66,7 +66,7 @@ const clauses = [
       "Contact JODEL directly if temporary cover is required during the regular cleaner's sickness or holiday.",
       "Inform JODEL before ending the arrangement with an introduced cleaner, or engaging that cleaner outside the agreed service.",
       "Consider an alternative cleaning day where necessary to arrange a suitable cleaner or temporary cover.",
-      "Pay the agreed agency and cleaner fees when due, subject to the agreement and legal rights, and give unambiguous work instructions.",
+      "Pay the agreed cleaning charges when due, subject to the agreement and statutory rights, and give unambiguous work instructions. JODEL does not impose a separate agency or service fee.",
     ],
   },
   {
@@ -74,8 +74,8 @@ const clauses = [
     items: [
       "For eligible distance or off-premises consumer service contracts, the customer has a 14-day statutory cancellation period beginning on the day the contract is entered into. To cancel, notify JODEL clearly by email or another agreed written method.",
       "Where a customer expressly requests services to begin during that 14-day period and then cancels, a proportionate amount for services actually supplied may be payable where the law permits. JODEL will seek the required express request and provide the statutory cancellation information.",
-      "Following the initial cooling-off period, a regular agency arrangement may be ended by giving the lesser of two months' written notice or any shorter notice specified in the booking confirmation, subject to statutory rights. JODEL may give the same agreed notice to end a regular arrangement.",
-      "JODEL asks customers not to recommend a JODEL-introduced cleaner to a third party outside the JODEL service, and not to engage a current or former introduced cleaner independently for 18 months following termination. Where a lawful, fair and clearly disclosed non-solicitation obligation has been agreed, the agency fee otherwise due for an unpaid period may be recoverable. This provision does not restrict rights that cannot lawfully be limited.",
+      "Following the initial cooling-off period, a regular cleaning arrangement may be ended by giving the lesser of two months' written notice or any shorter notice specified in the booking confirmation, subject to statutory rights. JODEL may give the same agreed notice to end a regular arrangement.",
+      "JODEL asks customers not to recommend a JODEL-introduced cleaner to a third party outside the JODEL service, and not to engage a current or former introduced cleaner independently for 18 months following termination. Any non-solicitation restriction is subject to proper advance disclosure, applicable consumer law and fairness requirements. No separate agency fee, service charge or automatic agency-fee penalty is payable under this provision.",
       "These provisions do not displace statutory cancellation rights, rights arising from non-performance or inadequate performance, or any remedy that cannot be excluded under consumer law.",
     ],
   },
@@ -94,7 +94,7 @@ export default function TermsPage() {
         <Link className="legal-back" href="/">← Back to JODEL</Link>
         <p className="eyebrow">JODEL CLEANING · CUSTOMER INFORMATION</p>
         <h1>Terms of business<span className="period">.</span></h1>
-        <p className="legal-intro">Our agency and domestic cleaning service commitments, adapted for JODEL. Last updated 14 November 2026.</p>
+        <p className="legal-intro">JODEL Cleaning customer terms. Guide price £21.50 per hour, subject to an individual quote, with no agency fee or service charge. Last updated 15 November 2026.</p>
         <p>These terms apply only when incorporated into your confirmed service arrangement. Your own JODEL quotation or booking confirmation sets the fees, schedule and any service-specific arrangements. Requesting a quote does not create a paid booking.</p>
         {clauses.map((section) => (
           <section key={section.title}>

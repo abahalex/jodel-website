@@ -13,18 +13,20 @@
 **Supplies and equipment**: [provided by customer or by cleaner/JODEL]  
 **Access / key handling**: [instructions agreed with customer and cleaner]
 
-### Exact charges (must be completed before acceptance)
+### Confirmed cleaning charges (must be completed before acceptance)
+
+**JODEL pricing policy:** £21.50 per hour is a **guide price**, not a fixed rate or a minimum; a confirmed quote can be lower or higher. **No agency fee or service charge.** Extras such as oven cleaning depend on the time needed, so agree any additional time and cost rather than assigning an automatic fixed add-on.
 
 | Charge | Agreed amount | Paid to | Timing/payment method |
 | --- | --- | --- | --- |
-| Cleaner time | £[actual amount] per hour or £[job price] | [cleaner / JODEL] | [when/how] |
-| JODEL agency fee | £[amount, or not applicable] | JODEL | [monthly advance / other] |
-| Initial or one-off fee | £[amount, or none] | [recipient] | [when] |
-| Minimum booking | [number] hours, or none | — | — |
-| Optional extra tasks | £[amount or included] | [recipient] | [when] |
-| Late cancellation | £[amount, or none]; applies after [notice] | [recipient] | [when] |
+| Agreed cleaning time | £[confirmed hourly rate; may differ from £21.50 guide] or £[quoted job price] | [JODEL / cleaner, as appropriate] | [when/how] |
+| Agency or service fee | **£0 — none** | — | — |
+| Expected time or scope | [number of hours / agreed work] | — | — |
+| Minimum booking | [number of hours or no minimum — confirm] | — | — |
+| Time-dependent extras (e.g. oven cleaning) | [extra work and expected time; price confirmed in quotation] | [JODEL / cleaner, as appropriate] | [when/how] |
+| Late cancellation, if applicable | £[agreed amount, or none] after [notice] | [recipient] | [when/how] |
 
-The website's planning calculator does **not** set prices or guarantee an appointment length. Confirm any revised quote with the customer before charging.
+The website's cleaning-time calculator is provisional. It does **not** set the actual charge or guarantee an appointment length. Do not calculate a binding price by multiplying an unverified time estimate by £21.50. Confirm scope and an individual quote before charging.
 
 ### Legal terms
 
@@ -43,7 +45,8 @@ Do not pre-tick this request on a website or infer it from a general enquiry. Ke
 
 ### Operational sign-off checklist
 
-- [ ] Price and who receives each charge confirmed.
+- [ ] Customer told the £21.50 guide is flexible; actual rate and who receives payment confirmed.
+- [ ] Confirmed no agency or service charge, and extras described as time-dependent.
 - [ ] Service scope, minimum hours and start date agreed.
 - [ ] Actual insurance summary and any applicable first-loss conditions available on request.
 - [ ] Applicable terms and privacy notice provided.

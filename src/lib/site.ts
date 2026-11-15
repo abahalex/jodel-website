@@ -1,6 +1,7 @@
 export const site = {
   name: "JODEL Cleaning",
   tag: "SPOTLESS SPACES. EXPERT CLEANERS.",
+  guideHourlyRate: 21.50,
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://jodelcleaning.com",
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "020 8936 7708",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@jodelcleaning.com",

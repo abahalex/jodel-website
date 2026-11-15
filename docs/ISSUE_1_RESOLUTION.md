@@ -5,7 +5,7 @@ This document accompanies [Issue #1](https://github.com/abahalex/jodel-website/i
 ## Already implemented
 
 - The website publishes JODEL-branded terms of business and a JODEL-specific privacy notice.
-- The user's instruction confirms that the **agency service commitments** correspond to the uploaded reference agreement, **except actual prices and calculator methodology**. The website preserves the separately payable agency/cleaner model conditionally in the written booking agreement. It does **not** insert the reference organisation's £40 fee or £7.50 cancellation penalty.
+- **Pricing confirmed by JODEL on 15 November 2026:** guide price **£21.50/hour**, with the actual quoted hourly rate potentially **lower or higher**. **No agency fee and no service charge**. Extras such as oven cleaning depend on the time required, not a fixed add-on fee. The payment recipient and exact rates for each booking must be confirmed individually. All old source-agency fee obligations have been removed from the customer terms.
 - The online calculator reproduces 7 room types, 6 optional recurring tasks, plus/minus controls with 0–10 bounds, half-hour rounding and zero-room validation.
 - The estimation formula and every provisional room/task coefficient are now in `src/lib/cleaning-time.mjs`, with behaviour tests in `tests/cleaning-time.test.mjs` (run `npm run test:calculator`).
 - JODEL website copy no longer refers to another company's "source agreement" or cleaner portal.
@@ -14,8 +14,8 @@ This document accompanies [Issue #1](https://github.com/abahalex/jodel-website/i
 
 | Topic | What is missing | Why it matters |
 | --- | --- | --- |
-| Cleaning prices | JODEL's real regular weekly/fortnightly hourly rate, one-off, deep, end-of-tenancy and after-builders pricing approach; whether quoted per hour or job; minimum booking hours and extra-task charges. | Without this, the calculator must NOT show a monetary quote or invent a fee. |
-| Agency fees | Actual amount, billing cadence, and late cancellation charge (if any). | The agreement can describe the operating model but should not advertise the other company’s charges. |
+| Pricing details still missing | Guide £21.50/hour and no agency/service fee are confirmed. Still need the final rate and expected hours for specific bookings, any minimum booking duration, and whether deep, tenancy and one-off cleans have a separate quotation basis. Extras are time-dependent. | We must not present the guide rate as a fixed guaranteed price for every clean. |
+| Payment and cancellation | Agency fee and service charge are confirmed as **£0**. Still unknown: whether customers pay JODEL or cleaners, payment due dates/method, and whether any late cancellation fee exists. | Customer contract must accurately describe who is paid and any cancellation charges. |
 | Calculator accuracy | Actual completed maintenance visits with room counts, requested extras, actual cleaner-hours, repeat frequency and whether first/regular clean. | No evidence yet establishes that the provisional coefficients predict actual working time. |
 | Insurance | Current JODEL insurance certificate/schedule, insurer, term, named insured, £1m policy, £100 first-loss/claim condition, theft and bleach exclusions. | The customer's confirmation of a commitment does not itself verify a policy is in force. |
 | Legal details | Correct legal/trading entity, service address/registered-office information if applicable, and applicable consumer terms reviewed for fairness. | Necessary for accurate information and appropriate customer contracts. |
@@ -40,7 +40,7 @@ For each visit, record these columns in this order:
 
 Compare observed minutes against predicted raw minutes for each visit. Compute error `predicted_minutes - actual_minutes`, absolute error, median absolute error, and median bias, separated by weekly/fortnightly visits. Look for consistent underestimation in bathrooms, large kitchens, stairs or optional tasks. Adjust coefficients only with supporting data; review the new predictions against a held-out set before changing the published formula.
 
-Do **not** assume a minimum duration or deep-clean multiplier unless JODEL has confirmed its booking policy and measured it. Continue displaying a provisional maintenance-clean time estimate, with no price, until calibration is complete.
+Do **not** assume a minimum duration or deep-clean multiplier unless JODEL confirms the booking policy and provides supporting measurements. Keep the calculator as a provisional **time-only** planner until calibration. The website can separately advertise the £21.50/hour guide; do not turn the provisional minutes into a binding quote.
 
 ## Consumer and privacy checks (UK)
 
@@ -59,7 +59,8 @@ References checked 15 November 2026:
 - [x] Terms and privacy pages published in the repository.
 - [x] Reference-only language removed from customer-facing terms and cleaner materials.
 - [x] Pure, testable calculator model split from UI, input bounds/rounding/zero-room automated tests.
-- [ ] Real JODEL price/fees/minimum hours supplied and verified.
+- [x] Guide price confirmed: £21.50/hour (may be lower/higher), **no agency fee, no service charge**, time-based extras.
+- [ ] Exact payment recipient/method, minimum hours, specialised service quoting and cancellation policy confirmed.
 - [ ] Calculator coefficients calibrated or explicitly accepted as a provisional, non-priced planner.
 - [ ] Insurance schedule, company identity and privacy operations checked.
 - [ ] External legal review where needed and live quote-form/print/build smoke tests completed.
