@@ -13,7 +13,8 @@ const services = [
 
 const extras = ["Oven & hob cleaning", "Fridge cleaning", "Inside cupboards", "Interior windows"];
 const questions = [
-  { question: "How much will my clean cost?", answer: "Every property is different. We provide a personalised quotation based on the service, property size, condition and any extras you request. Asking for a quote is free." },
+  { question: "How much will my clean cost?", answer: "Our guide price is £21.50 per hour. Your actual rate can be lower or higher depending on the service and cleaning requirements. We confirm your personalised quotation before booking. There is no separate agency fee or service charge." },
+  { question: "How are extras such as oven cleaning charged?", answer: "Extras such as oven and hob cleaning depend on the time needed, rather than a fixed add-on price. Tell us which extras you need and we will discuss the time and price in your quotation." },
   { question: "Which areas do you cover?", answer: "JODEL is based in Bexley, South East London. Share your postcode and we'll confirm whether we're able to cover your address." },
   { question: "Can I book a regular clean?", answer: "Yes. You can enquire about weekly or fortnightly cleaning, and we'll confirm availability before arranging a visit." },
   { question: "Do I have to pay when I enquire?", answer: "No. An enquiry is not a confirmed booking, and there's no payment required to request a quote. We'll discuss the work, price and available dates with you first." },
@@ -53,7 +54,7 @@ export default function Home() {
             <div className="hero-text">
               <p className="kicker kicker-light"><span className="kicker-rule" /> HOME CLEANING, SIMPLIFIED</p>
               <h1 id="hero-title">A clean home.<br /><span>A clear mind.</span></h1>
-              <p className="hero-lede">Come home to a space that feels good. From your weekly clean to a complete reset, JODEL helps take cleaning off your to-do list.</p>
+              <p className="hero-lede">Come home to a space that feels good. From your weekly clean to a complete reset, JODEL helps take cleaning off your to-do list. Our guide price is £21.50 per hour, with no additional agency or service fee; the confirmed hourly rate may be higher or lower.</p>
               <div className="hero-actions">
                 <a className="action action-yellow" href="#quote">Request a free quote <ArrowUpRight /></a>
                 <a className="text-link light-link" href="#services">View cleaning services <ArrowRight /></a>
@@ -128,7 +129,7 @@ export default function Home() {
 
         <section className="extras" aria-labelledby="extras-heading">
           <div className="shell extras-layout">
-            <div><p className="kicker kicker-light">THE LITTLE EXTRAS</p><h2 id="extras-heading">A little more attention<br />where it matters.</h2><p>Ask about additional tasks when you request a quotation. Extras are priced and agreed separately.</p></div>
+            <div><p className="kicker kicker-light">THE LITTLE EXTRAS</p><h2 id="extras-heading">A little more attention<br />where it matters.</h2><p>Ask about additional tasks when you request a quotation. Extras such as oven cleaning are time-dependent, not fixed-price add-ons; we will agree the expected time and cost with you.</p></div>
             <div className="extras-grid">{extras.map(extra => <span key={extra}><Check />{extra}</span>)}</div>
           </div>
         </section>
@@ -138,7 +139,7 @@ export default function Home() {
             <div className="quote-copy">
               <p className="kicker">LET'S GET STARTED</p>
               <h2 id="quote-heading">Tell us about<br />your <em>space.</em></h2>
-              <p>Every clean is different, so we quote individually. Share a few details and we'll get back to you about what's possible.</p>
+              <p>Our guide is £21.50 per hour, although the confirmed rate may be higher or lower. There are no separate agency or service charges. Share a few details and we'll provide a personalised quote, including any time-dependent extras.</p>
               <div className="quote-promise"><Check /><span><strong>No pressure, no payment.</strong><br />Requesting a quote doesn't confirm a booking.</span></div>
               <div className="contact-card">
                 <p>PREFER TO TALK?</p>
