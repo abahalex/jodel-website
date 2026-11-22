@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { site } from "@/lib/site";
 import { indicativeTotal, isPlanningService, isUrgentService, PRIORITY_TASKS, REQUESTED_HOURS, RUSH_FEE_GUIDE } from "@/lib/cleaning-offers";
 
 export const runtime = "nodejs";
@@ -79,9 +80,9 @@ export async function POST(request: Request) {
       ...(isPlanningService(lead.service) ? [
         ["Requested visit length", lead.requestedHours + " hours"] as [string, string],
         ["Customer-priority tasks", lead.priorities.join(", ") || "Not specified"] as [string, string],
-        ["Illustrative cleaning subtotal (guide, not quote)", "£" + (Number(lead.requestedHours) * 21.5).toFixed(2)] as [string, string],
+        ["Illustrative cleaning subtotal (guide, not quote)", "£" + (Number(lead.requestedHours) * site.guideHourlyRate).toFixed(2)] as [string, string],
         ["Illustrative rush supplement (provisional)", isUrgentService(lead.service) ? "£" + RUSH_FEE_GUIDE.toFixed(2) : "Not applicable"] as [string, string],
-        ["Illustrative total including rush fee (not quote)", "£" + indicativeTotal(Number(lead.requestedHours), lead.service).toFixed(2)] as [string, string],
+        ["Illustrative total including rush fee (not quote)", "£" + indicativeTotal(Number(lead.requestedHours), lead.service, site.guideHourlyRate).toFixed(2)] as [string, string],
         ["Arrival priority", isUrgentService(lead.service) ? "Four-hour arrival requested — subject to confirmed availability; NOT booked" : "Standard quotation"] as [string, string],
       ] : []),
       ["Notes", lead.message || "None"],
