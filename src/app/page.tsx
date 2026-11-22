@@ -3,6 +3,7 @@ import Image from "next/image";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ArrowRight, ArrowUpRight, Check, Mail, Phone, Pin, Sparkle } from "@/components/Icons";
 import { site, whatsappHref } from "@/lib/site";
+import { RUSH_FEE_GUIDE, ARRIVAL_TARGET_HOURS } from "@/lib/cleaning-offers";
 
 const services = [
   { number: "01", title: "Regular home cleaning", short: "Keep on top of everyday life.", text: "Weekly, fortnightly or occasional cleaning shaped around your home and routine.", image: "regular" },
@@ -14,6 +15,9 @@ const services = [
 const extras = ["Oven & hob cleaning", "Fridge cleaning", "Inside cupboards", "Interior windows"];
 const questions = [
   { question: "How much will my clean cost?", answer: "Our guide price is £21.50 per hour. Your actual rate can be lower or higher depending on the service and cleaning requirements. We confirm your personalised quotation before booking. There is no separate agency fee or service charge." },
+  { question: "What is Priority Clean?", answer: "Choose the rooms or tasks that matter most to you and request a two-, three- or four-hour visit. We then agree a realistic cleaning plan and individual quotation before booking; selected tasks are priorities, not a guarantee of completion within a set time." },
+  { question: "Can I request a cleaner within four hours?", answer: "You can request a short-notice clean with a four-hour arrival target. It depends on cleaner availability, your postcode, travel time and operating hours. JODEL must explicitly confirm the appointment; sending an enquiry does not dispatch a cleaner." },
+  { question: "Is there a rush fee?", answer: "Short-notice requests have a proposed £20 rush supplement, shown in the illustrative total when you request a quote. The final supplement, cleaning hours and total price will be confirmed and agreed before any booking. No rush fee is charged for a declined enquiry." },
   { question: "How are extras such as oven cleaning charged?", answer: "Extras such as oven and hob cleaning depend on the time needed, rather than a fixed add-on price. Tell us which extras you need and we will discuss the time and price in your quotation." },
   { question: "Which areas do you cover?", answer: "JODEL is based in Bexley, South East London. Share your postcode and we'll confirm whether we're able to cover your address." },
   { question: "Can I book a regular clean?", answer: "Yes. You can enquire about weekly or fortnightly cleaning, and we'll confirm availability before arranging a visit." },
@@ -36,13 +40,13 @@ export default function Home() {
             <Image src="/jodel-logo.png" width={252} height={85} alt="JODEL Cleaning" priority />
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
-            <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><Link href="/resources">Resources</Link>
+            <a href="#services">Services</a><a href="#offers">Priority &amp; rapid clean</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><Link href="/resources">Resources</Link>
           </nav>
           <a className="header-cta" href="#quote">Get a quote <ArrowUpRight /></a>
           <details className="mobile-nav">
             <summary aria-label="Open navigation menu"><span></span><span></span><span></span></summary>
             <nav aria-label="Mobile navigation">
-              <a href="#services">Services</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><Link href="/resources">Resources</Link><a href="#quote">Get a free quote <ArrowUpRight /></a>
+              <a href="#services">Services</a><a href="#offers">Priority &amp; rapid clean</a><a href="#approach">Our approach</a><a href="#process">How it works</a><a href="#questions">FAQs</a><Link href="/resources">Resources</Link><a href="#quote">Get a free quote <ArrowUpRight /></a>
             </nav>
           </details>
         </div>
@@ -57,7 +61,7 @@ export default function Home() {
               <p className="hero-lede">Come home to a space that feels good. From your weekly clean to a complete reset, JODEL helps take cleaning off your to-do list. Our guide price is £21.50 per hour, with no additional agency or service fee; the confirmed hourly rate may be higher or lower.</p>
               <div className="hero-actions">
                 <a className="action action-yellow" href="#quote">Request a free quote <ArrowUpRight /></a>
-                <a className="text-link light-link" href="#services">View cleaning services <ArrowRight /></a>
+                <a className="text-link light-link" href="#offers">Priority &amp; short-notice cleaning <ArrowRight /></a>
               </div>
               <div className="hero-local"><Pin /><span>Based in Bexley, serving nearby areas of South East London.</span></div>
             </div>
@@ -72,7 +76,7 @@ export default function Home() {
           <div className="shell promise-list">
             <span><Check /> Personalised quotes</span>
             <span><Check /> One-off &amp; recurring cleaning</span>
-            <span><Check /> Clear, simple enquiries</span>
+            <span><Check /> Priorities agreed before cleaning</span>
           </div>
         </div>
 
@@ -97,6 +101,42 @@ export default function Home() {
               ))}
             </div>
             <div className="service-note"><p>Not sure which clean is right? <strong>Tell us what you need and we'll help you decide.</strong></p><a className="text-link" href="#quote">Talk to JODEL <ArrowRight /></a></div>
+          </div>
+        </section>
+
+        <section className="block offer-section" id="offers" aria-labelledby="offers-heading">
+          <div className="shell">
+            <div className="section-intro">
+              <div><p className="kicker">TWO WAYS TO CLEAN</p><h2 id="offers-heading">Your priorities.<br /><em>Your timetable.</em></h2></div>
+              <p>Choose the cleaning work that matters most, or ask us to arrange an urgent visit. We discuss the scope and price with you before anything is booked.</p>
+            </div>
+            <div className="offer-grid">
+              <article className="offer-card">
+                <div className="offer-card-top"><span>01 / YOUR PRIORITIES FIRST</span><span className="offer-icon" aria-hidden="true">✓</span></div>
+                <h3>JODEL Priority Clean</h3>
+                <p>Choose which rooms and tasks matter most within a requested two-, three- or four-hour visit. We'll agree what can reasonably be completed before the clean.</p>
+                <ul>
+                  <li>Choose kitchen, bathrooms, floors and other priorities</li>
+                  <li>Agree the planned scope and time in advance</li>
+                  <li>See an indicative cost before sending an enquiry</li>
+                </ul>
+                <div className="offer-price"><strong>From £{(site.guideHourlyRate * 2).toFixed(2)}</strong><span>2-hour illustration at the £{site.guideHourlyRate.toFixed(2)}/hour guide; final quote may vary</span></div>
+                <a className="action action-dark" href="/?jodelService=Priority%20Clean#quote">Plan my Priority Clean <ArrowUpRight /></a>
+              </article>
+              <article className="offer-card offer-card-urgent">
+                <div className="offer-card-top"><span>02 / SHORT-NOTICE REQUEST</span><span className="offer-icon" aria-hidden="true">↗</span></div>
+                <h3>Need a cleaner today?</h3>
+                <p>Request a cleaner with a target arrival within {ARRIVAL_TARGET_HOURS} hours. We'll check local cleaner availability and travel time before confirming whether we can help.</p>
+                <ul>
+                  <li>Four-hour arrival target where feasible — not guaranteed</li>
+                  <li>Provisional £{RUSH_FEE_GUIDE.toFixed(2)} rush supplement included in the displayed total</li>
+                  <li>No charge or booking unless you accept the final quote</li>
+                </ul>
+                <div className="offer-price"><strong>£{(site.guideHourlyRate * 2 + RUSH_FEE_GUIDE).toFixed(2)} indicative total</strong><span>Example: 2 hours of cleaning + £{RUSH_FEE_GUIDE.toFixed(2)} rush supplement; final quote may vary</span></div>
+                <a className="action action-yellow" href="/?jodelService=Short-notice%20cleaning#quote">Request a short-notice clean <ArrowUpRight /></a>
+              </article>
+            </div>
+            <p className="offer-disclaimer">Four-hour arrival is a request, not an availability promise. Response and arrival depend on postcode, cleaner acceptance, operating hours and traffic. The rush supplement is provisional pending JODEL's operational pricing confirmation; final total is agreed before booking. No instant bookings are made through this website.</p>
           </div>
         </section>
 
@@ -139,7 +179,7 @@ export default function Home() {
             <div className="quote-copy">
               <p className="kicker">LET'S GET STARTED</p>
               <h2 id="quote-heading">Tell us about<br />your <em>space.</em></h2>
-              <p>Our guide is £21.50 per hour, although the confirmed rate may be higher or lower. There are no separate agency or service charges. Share a few details and we'll provide a personalised quote, including any time-dependent extras.</p>
+              <p>Our guide is £21.50 per hour, although the confirmed rate may be higher or lower. There are no standard agency or service charges. Short-notice cleaning may include a clearly disclosed rush supplement; any extras and the final total are agreed in advance.</p>
               <div className="quote-promise"><Check /><span><strong>No pressure, no payment.</strong><br />Requesting a quote doesn't confirm a booking.</span></div>
               <div className="contact-card">
                 <p>PREFER TO TALK?</p>
