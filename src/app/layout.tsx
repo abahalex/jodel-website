@@ -7,7 +7,7 @@ const baseUrl = site.siteUrl.startsWith("https://") ? site.siteUrl : "https://ex
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: { default: "JODEL Cleaning | Spotless Spaces, Expert Cleaners", template: "%s | JODEL" },
-  description: "JODEL Cleaning offers regular home cleaning, deep cleaning, end-of-tenancy and after builders cleaning in London. Get your personalised, no-obligation quote.",
+  description: "JODEL Cleaning in Bexley and surrounding South East London. Plan a Priority Clean around your home, or request short-notice cleaning subject to availability. Free, no-obligation quotes.",
   openGraph: { title: "JODEL Cleaning — Spotless Spaces. Expert Cleaners.", description: "More time for life. Less time cleaning. Request a free quote from JODEL.", type: "website", images: ["/jodel-social.png"] },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
