@@ -23,6 +23,9 @@ const clauses = [
       "JODEL's guide price is £21.50 per hour. This is an indication, not a fixed or minimum rate: the rate confirmed for your booking may be lower or higher depending on your requirements. We provide a personalised quotation before you commit.",
       "JODEL does not charge a separate agency fee or service charge. The customer pays only the cleaning costs and any other amount clearly disclosed and agreed in the written quotation or booking confirmation. An enquiry is free and does not create a booking.",
       "Additional tasks, such as oven and hob cleaning, depend on the time required. Their expected time, scope and any corresponding cost will be discussed and agreed as part of the quotation; they do not carry an automatic fixed add-on price.",
+      "JODEL Priority Clean allows customers to identify priority areas and request a visit duration. The agreed tasks reflect realistic scope for the available time and do not guarantee that every selected item will be completed regardless of its condition.",
+      "Short-notice cleaning may be requested with a target arrival within four hours, but arrival is not guaranteed. Confirmation depends on a suitable cleaner accepting, operating hours, postcode coverage and travel conditions. A website enquiry is not a dispatch or confirmed booking.",
+      "A short-notice rush supplement, if applicable, will be explicitly disclosed as part of the total quotation and agreed before booking. Website calculations use a provisional £20 illustration, not a binding offer; JODEL will confirm the actual supplement or explain if the requested arrival cannot be provided.",
       "Before booking, JODEL will confirm the agreed hourly rate or any applicable job price, expected hours or scope, how payment will be collected, to whom it is payable and when payment is due. We will explain in advance if the customer pays an introduced cleaner directly.",
       "If the arrangement requires payment directly to a cleaner, the customer should pay the agreed amount at the agreed time and keep a record of attendance and payment. Where payment is made to JODEL, we will confirm the method and due date separately.",
       "Any change to the agreed tasks, hours or rate will be discussed before the revised work takes place. Any advance payment, credit or refund is handled in accordance with the booking agreement and applicable law, including the customer's mandatory statutory rights.",
@@ -94,7 +97,7 @@ export default function TermsPage() {
         <Link className="legal-back" href="/">← Back to JODEL</Link>
         <p className="eyebrow">JODEL CLEANING · CUSTOMER INFORMATION</p>
         <h1>Terms of business<span className="period">.</span></h1>
-        <p className="legal-intro">JODEL Cleaning customer terms. Guide price £21.50 per hour, subject to an individual quote, with no agency fee or service charge. Last updated 15 November 2026.</p>
+        <p className="legal-intro">JODEL Cleaning customer terms. Guide price £21.50 per hour, subject to an individual quote, with no agency fee or service charge. Last updated 22 November 2026.</p>
         <p>These terms apply only when incorporated into your confirmed service arrangement. Your own JODEL quotation or booking confirmation sets the fees, schedule and any service-specific arrangements. Requesting a quote does not create a paid booking.</p>
         {clauses.map((section) => (
           <section key={section.title}>
