@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { indicativeTotal, isPlanningService, isUrgentService, PRIORITY_TASKS, REQUESTED_HOURS, RUSH_FEE_GUIDE } from "@/lib/cleaning-offers";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -15,10 +16,14 @@ type Lead = {
   privacyAcknowledged: string;
   companyWebsite: string;
   extras: string[];
+  requestedHours: string;
+  priorities: string[];
 };
 
-const services = new Set(["Regular home cleaning", "Deep cleaning", "End-of-tenancy cleaning", "One-off cleaning", "After builders cleaning", "Not sure yet"]);
+const services = new Set(["Priority Clean", "Short-notice cleaning", "Regular home cleaning", "Deep cleaning", "End-of-tenancy cleaning", "One-off cleaning", "After builders cleaning", "Not sure yet"]);
 const allowedExtras = new Set(["Oven & hob cleaning", "Fridge cleaning", "Inside cupboards", "Interior windows"]);
+const allowedPriorities = new Set<string>(PRIORITY_TASKS);
+const allowedHours = new Set(REQUESTED_HOURS.map(String));
 const bedrooms = new Set(["", "Studio", "1", "2", "3", "4", "5+"]);
 const ukPostcode = /^(GIR\s?0AA|(?:[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}))$/i;
 
@@ -46,11 +51,16 @@ export async function POST(request: Request) {
       message: value(obj.message, 1500), privacyAcknowledged: value(obj.privacyAcknowledged, 5),
       companyWebsite: value(obj.companyWebsite),
       extras: Array.isArray(obj.extras) ? obj.extras.filter((v): v is string => typeof v === "string" && allowedExtras.has(v)).slice(0,4) : [],
+      requestedHours: value(obj.requestedHours, 4),
+      priorities: Array.isArray(obj.priorities) ? obj.priorities.filter((v): v is string => typeof v === "string" && allowedPriorities.has(v)).slice(0,6) : [],
     };
     // Honeypot: return success to bots, without sending an email.
     if (lead.companyWebsite) return NextResponse.json({ message: "Thank you." });
     if (lead.name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email) || !ukPostcode.test(lead.postcode) || !services.has(lead.service) || !bedrooms.has(lead.bedrooms) || lead.privacyAcknowledged !== "yes") {
       return NextResponse.json({ message: "Please check the required fields and postcode." }, { status: 400 });
+    }
+    if (isPlanningService(lead.service) && (!allowedHours.has(lead.requestedHours) || (isUrgentService(lead.service) && lead.phone.replace(/\D/g, "").length < 10))) {
+      return NextResponse.json({ message: "Please select a valid duration and provide a reachable phone number for urgent requests." }, { status: 400 });
     }
     if (lead.preferredDate && !/^\d{4}-\d{2}-\d{2}$/.test(lead.preferredDate)) {
       return NextResponse.json({ message: "Please check the date." }, { status: 400 });
@@ -66,6 +76,14 @@ export async function POST(request: Request) {
       ["Postcode", lead.postcode], ["Service", lead.service], ["Bedrooms", lead.bedrooms || "Not specified"],
       ["Preferred date", lead.preferredDate || "Flexible / not specified"],
       ["Optional extras", lead.extras.join(", ") || "None"],
+      ...(isPlanningService(lead.service) ? [
+        ["Requested visit length", lead.requestedHours + " hours"] as [string, string],
+        ["Customer-priority tasks", lead.priorities.join(", ") || "Not specified"] as [string, string],
+        ["Illustrative cleaning subtotal (guide, not quote)", "£" + (Number(lead.requestedHours) * 21.5).toFixed(2)] as [string, string],
+        ["Illustrative rush supplement (provisional)", isUrgentService(lead.service) ? "£" + RUSH_FEE_GUIDE.toFixed(2) : "Not applicable"] as [string, string],
+        ["Illustrative total including rush fee (not quote)", "£" + indicativeTotal(Number(lead.requestedHours), lead.service).toFixed(2)] as [string, string],
+        ["Arrival priority", isUrgentService(lead.service) ? "Four-hour arrival requested — subject to confirmed availability; NOT booked" : "Standard quotation"] as [string, string],
+      ] : []),
       ["Notes", lead.message || "None"],
     ];
     const html = `<div style="font-family:Arial,sans-serif;color:#18332d;max-width:620px;margin:auto"><h2>New JODEL cleaning enquiry</h2><p>Someone requested a quotation from your website.</p><table style="border-collapse:collapse;width:100%">${rows.map(([k, v]) => `<tr><th style="text-align:left;padding:12px;border-bottom:1px solid #ddd;vertical-align:top">${escapeHtml(k)}</th><td style="padding:12px;border-bottom:1px solid #ddd;white-space:pre-wrap">${escapeHtml(v)}</td></tr>`).join("")}</table><p>Reply to this enquiry at <a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a>.</p></div>`;
@@ -77,7 +95,7 @@ export async function POST(request: Request) {
         from: LEADS_FROM_EMAIL,
         to: [LEADS_TO_EMAIL],
         reply_to: lead.email,
-        subject: `JODEL cleaning enquiry — ${lead.postcode} — ${lead.service}`,
+        subject: `${isUrgentService(lead.service) ? "URGENT 4-HOUR REQUEST — " : ""}JODEL cleaning enquiry — ${lead.postcode} — ${lead.service}`,
         html,
         text: rows.map(([k, v]) => `${k}: ${v}`).join("\n"),
       }),
