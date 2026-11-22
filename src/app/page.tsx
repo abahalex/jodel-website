@@ -120,7 +120,7 @@ export default function Home() {
                   <li>Agree the planned scope and time in advance</li>
                   <li>See an indicative cost before sending an enquiry</li>
                 </ul>
-                <div className="offer-price"><strong>From £{(site.guideHourlyRate * 2).toFixed(2)}</strong><span>2-hour illustration at the £{site.guideHourlyRate.toFixed(2)}/hour guide; final quote may vary</span></div>
+                <div className="offer-price"><strong>£{(site.guideHourlyRate * 2).toFixed(2)} illustration</strong><span>2-hour illustration at the £{site.guideHourlyRate.toFixed(2)}/hour guide; final quote may vary</span></div>
                 <a className="action action-dark" href="/?jodelService=Priority%20Clean#quote">Plan my Priority Clean <ArrowUpRight /></a>
               </article>
               <article className="offer-card offer-card-urgent">
