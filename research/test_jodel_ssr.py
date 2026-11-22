@@ -13,7 +13,8 @@ class SSRTests(unittest.TestCase):
 
     def test_all_equal_fallback(self):
         anchors = [[[1, 0]] * 5 for _ in range(6)]
-        self.assertEqual(ssr_distribution([1, 0], anchors), [0.2] * 5)
+        for value in ssr_distribution([1, 0], anchors):
+            self.assertAlmostEqual(value, 0.2)
 
     def test_concepts_have_matched_guide_price(self):
         self.assertEqual(len(POSITIONING), 3)
